@@ -1,0 +1,9 @@
+<div class="cocktail-card-wrapper">
+  <span class="icon-star" [id]="'star-' + cocktail.id" [class.active]="isFavorite" (click)="addToFavoritesClicked()"></span>
+  <img [src]="cocktail.imageUrl" class="cocktail-image"/>
+  <div class="description">
+    <h4 [routerLink]="['details', cocktail.id]" routerLinkActive="router-link-active" >{{ cocktail.name }}</h4>
+    <app-alcohol-chip [isAlcoholic]="cocktail.isAlcoholic"></app-alcohol-chip>
+    <div>{{ cocktail.ingredients.join(' | ')}}</div>
+  </div>
+</div>

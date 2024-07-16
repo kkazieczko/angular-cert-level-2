@@ -1,0 +1,25 @@
+.details-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 40px;
+  
+  img {
+    flex: 1;
+    max-height: 400px;
+  }
+
+  div {
+    flex: 3
+  }
+}
+
+.icon-star {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}
+
+.title {
+  display: flex;
+  align-items: center; 
+}

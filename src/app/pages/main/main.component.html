@@ -1,0 +1,16 @@
+<div class="filters-section">
+  <h3> Filters </h3>
+  <div>
+    Cocktail name:
+    <input type="text" [(ngModel)]="filterInput"/>
+  </div>
+</div>
+
+<div class="cocktails-section">
+  <app-cocktail-card 
+    *ngFor="let cocktail of filteredCocktails()" 
+    [cocktail]="cocktail" 
+    [isFavorite]="favorites()[cocktail.id]" 
+    (favoritesClicked)="toggleFavorites($event)"
+  ></app-cocktail-card>
+</div>

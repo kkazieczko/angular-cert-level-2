@@ -1,0 +1,12 @@
+.chip {
+  border-radius: 16px;
+  padding: 2px;
+  color: white;
+  background-color:  #a0bc89;
+  width: 120px;
+  text-align: center;
+
+  &.alcoholic {
+    background-color: #5d7fac;
+  } 
+}

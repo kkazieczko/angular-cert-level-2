@@ -1,0 +1,38 @@
+<button [routerLink]="['/']"> Home </button>
+<div *ngIf="cocktail; else loading" class="details-wrapper">
+  <img [src]="cocktail.imageUrl" class="cocktail-image"/>
+  <div>
+    <div class="title">
+      <h2> {{ cocktail.name }}</h2>
+      <span class="icon-star" [id]="'star-' + cocktail.id" [class.active]="isFavorite()" (click)="addToFavoritesClicked()"></span>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th> Type: </th>
+          <td> <app-alcohol-chip [isAlcoholic]="cocktail.isAlcoholic"></app-alcohol-chip> </td>
+        </tr>
+        <tr>
+          <th>
+            Ingredients:
+          </th>
+          <td>
+            <ul>
+              <li *ngFor="let item of cocktail.ingredients">
+                {{ item }}
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th>Instructions</th>
+          <td>{{ cocktail.instructions }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  loading...
+</ng-template>
