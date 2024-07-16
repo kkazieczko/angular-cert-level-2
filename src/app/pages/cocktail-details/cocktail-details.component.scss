@@ -4,12 +4,15 @@
   gap: 40px;
   
   img {
-    flex: 1;
-    max-height: 400px;
+    width: 20rem;
   }
 
-  div {
-    flex: 3
+  .right-side-container {
+    flex: 1;
+  }
+
+  .left-side-container {
+    margin-top: 55px;
   }
 }
 
@@ -22,4 +25,8 @@
 .title {
   display: flex;
   align-items: center; 
+}
+
+.info-table {
+  max-height: unset;
 }

@@ -1,13 +1,15 @@
 <button [routerLink]="['/']"> Home </button>
 <div *ngIf="cocktail; else loading" class="details-wrapper">
-  <img [src]="cocktail.imageUrl" class="cocktail-image"/>
-  <div>
+  <div class="left-side-container">
+    <img [src]="cocktail.imageUrl" class="cocktail-image"/>
+  </div>
+  <div class="right-side-container">
     <div class="title">
       <h2> {{ cocktail.name }}</h2>
       <span class="icon-star" [id]="'star-' + cocktail.id" [class.active]="isFavorite()" (click)="addToFavoritesClicked()"></span>
     </div>
     <div>
-      <table>
+      <table class="info-table">
         <tr>
           <th> Type: </th>
           <td> <app-alcohol-chip [isAlcoholic]="cocktail.isAlcoholic"></app-alcohol-chip> </td>
