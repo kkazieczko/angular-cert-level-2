@@ -1,11 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, computed, input, model, signal } from '@angular/core';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 import { CocktailCardComponent } from '../../components/cocktail-card/cocktail-card.component';
 import { CocktailApiService } from '../../services/cocktail-api/cocktail-api.service';
 import { FormsModule } from '@angular/forms';
 import { Cocktail } from '../../interfaces/cocktail.interface';
 import { CommonModule } from '@angular/common';
-import { combineLatest, debounceTime, map, startWith } from 'rxjs';
 import { FavoritesService } from '../../services/favorites/favorites.service';
 
 @Component({

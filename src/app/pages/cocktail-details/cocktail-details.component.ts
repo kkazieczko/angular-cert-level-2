@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, computed, signal } from '@angular/core';
 import { Cocktail } from '../../interfaces/cocktail.interface';
 import { CocktailApiService } from '../../services/cocktail-api/cocktail-api.service';
-import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FavoritesService } from '../../services/favorites/favorites.service';
@@ -12,11 +12,13 @@ import { AlcoholChipComponent } from '../../components/alcohol-chip/alcohol-chip
   standalone: true,
   imports: [CommonModule, RouterModule, AlcoholChipComponent],
   templateUrl: './cocktail-details.component.html',
-  styleUrl: './cocktail-details.component.scss'
+  styleUrl: './cocktail-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CocktailDetailsComponent implements OnInit, OnDestroy {
 
   cocktail: Cocktail;
+  isLoading = signal(false);
   isFavorite = computed(() => {
     return this.favoritesService.favorites()[this.cocktail.id]
   });
@@ -30,6 +32,7 @@ export class CocktailDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.isLoading.set(true);
     this.router.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (!id) {
@@ -44,7 +47,10 @@ export class CocktailDetailsComponent implements OnInit, OnDestroy {
   }
 
   fetchCocktail(id: string) {
-    this.apiService.getCocktail(id).subscribe(cocktail => this.cocktail = cocktail);
+    this.apiService.getCocktail(id).subscribe(cocktail => {
+      this.cocktail = cocktail;
+      this.isLoading.set(false);
+  });
   }
 
   addToFavoritesClicked() {

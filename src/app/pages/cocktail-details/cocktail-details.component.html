@@ -1,5 +1,5 @@
 <button [routerLink]="['/']"> Home </button>
-<div *ngIf="cocktail; else loading" class="details-wrapper">
+<div *ngIf="!isLoading(); else loading" class="details-wrapper">
   <div class="left-side-container">
     <img [src]="cocktail.imageUrl" class="cocktail-image"/>
   </div>
